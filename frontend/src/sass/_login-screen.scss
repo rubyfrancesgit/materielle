@@ -1,0 +1,90 @@
+.login-screen {
+    width: 100vw;
+    height: 100vh;
+    @include center;
+    flex-direction: column;
+
+    &__heading {
+        @include logo-heading;
+    }
+
+    &__light-p {
+        @include light-p-text;
+        text-align: center;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    &__login-btn {
+        @include btn-beginnings;
+        margin-right: .5rem;
+    }
+
+    &__register-btn {
+        @include btn-beginnings;
+        margin-left: .5rem;
+    }
+
+    &__btn-div {
+        display: flex;
+    }
+}
+
+.login-form {
+    &__heading {
+        @include heading;
+    }
+
+    &__form {
+        margin-top: 2rem;
+    }
+
+    &__input {
+        @include input;
+    }
+
+    &__btn {
+        @include btn-beginnings;
+        margin-top: 2rem;
+    }
+}
+
+.modal {
+    width: 80vw;
+    height: 50vh;
+    @include center;
+    background: white;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 100;
+    padding: 3rem;
+    overflow-y: scroll;
+
+    &__heading {
+        @include p-text;
+        font-size: 2rem;
+    }
+
+    &__light-p {
+        @include light-p-text;
+        margin-bottom: 1rem;
+    }
+
+    &__p {
+        @include p-text;
+    }
+}
+
+.modal-background {
+    width: 100vw;
+    height: 100vh;
+    @include center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: rgba(0, 0, 0, 0.2);
+}

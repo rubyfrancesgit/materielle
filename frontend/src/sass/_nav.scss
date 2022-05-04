@@ -4,6 +4,23 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 5rem;
-    padding-right: 5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    box-shadow: 0px 2px 5px rgb(207, 207, 207);
+
+    &__heading {
+        @include logo-heading;
+    }
+
+    &__user-div {
+        display: flex;
+        align-items: center;
+    }
+
+    &__profile-img {
+        width: 6vh;
+        height: 6vh;
+        border-radius: 360px;
+        margin-right: 1rem;
+    }
 }
