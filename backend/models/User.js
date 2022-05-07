@@ -41,15 +41,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    photoLinkOne: {
-        type: String,
-        require: true
-    },
-    photoLinkTwo: {
-        type: String,
-        require: true
-    },
-    photoLinkThree: {
+    profilePictureLink: {
         type: String,
         require: true
     },

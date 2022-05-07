@@ -8,10 +8,19 @@
         margin-bottom: 2rem;
     }
 
+    &__container {
+        display: flex;
+    }
+
+    &__user-div {
+        width: 28vw;
+    }
+
     &__img {
-        width: 30vw;
-        height: 30vw;
+        width: 25vw;
+        height: 25vw;
         border-radius: 5px;
+        cursor: pointer;
     }
 
     &__name {
@@ -20,5 +29,9 @@
 
     &__city {
         @include light-p-text;
+    }
+
+    &__props-div {
+        display: none;
     }
 }

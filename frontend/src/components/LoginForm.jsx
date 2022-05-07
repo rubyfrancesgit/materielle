@@ -1,11 +1,14 @@
 import React, { useContext, useState } from 'react';
 import Axios from "axios";
-import { UserContext } from '../UserContext';
+import { GlobalContext } from '../context/GlobalContext';
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm() {
-  const { user, setUser } = useContext(UserContext);
+  const { setUser, setLoginModalClasses, setModalBackgroundClasses  } = useContext(GlobalContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const loginUser = (e) => {
       e.preventDefault();
@@ -25,19 +28,11 @@ function LoginForm() {
           } else {
               console.log("logged in");
               setUser(response.data);
-              console.log(user);
+              setLoginModalClasses("hide");
+              setModalBackgroundClasses("hide");
               
-              // storing logged-in user's details
-              sessionStorage.setItem("userID", response.data._id);
-              sessionStorage.setItem('userName', response.data.name);
-              sessionStorage.setItem('userEmail', response.data.email);
           }
       });
-  }
-
-  const logoutUser = () => {
-      console.log("logged out");
-      sessionStorage.clear();
   }
 
   return (
@@ -47,12 +42,10 @@ function LoginForm() {
       <form className="login-form__form" onSubmit={loginUser}>
         <input className="login-form__input" type="text" placeholder="Email..." onChange={(event) => setEmail(event.target.value)} required />
 
-        <input className="login-form__input" type="text" placeholder="Password..." onChange={(event) => setPassword(event.target.value)} required />
+        <input className="login-form__input" type="password" placeholder="Password..." onChange={(event) => setPassword(event.target.value)} required />
 
         <button className="login-form__btn" type="submit">Login</button>
       </form>
-
-      {/* <button onClick={logoutUser}>Logout</button> */}
     </div>
   )
 }

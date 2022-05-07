@@ -12,14 +12,18 @@
         @include logo-heading;
     }
 
+    &__p {
+        @include p-text;
+    }
+
     &__user-div {
         display: flex;
         align-items: center;
     }
 
     &__profile-img {
-        width: 6vh;
-        height: 6vh;
+        width: 4vh;
+        height: 4vh;
         border-radius: 360px;
         margin-right: 1rem;
     }

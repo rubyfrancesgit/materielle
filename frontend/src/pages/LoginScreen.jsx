@@ -1,25 +1,26 @@
 import React, { useContext, useState } from 'react';
+import { Link } from "react-router-dom";
 
 // components
 import LoginForm from '../components/LoginForm';
-import { UserContext } from '../UserContext';
+import { GlobalContext } from '../context/GlobalContext';
 
 function LoginScreen() {
-    const message = useContext(UserContext);
-    console.log(message);
 
-    const [loginModalClasses, setLoginModalClasses] = useState("modal hide");
-    const [modalBackgroundClasses, setModalBackgroundClasses] = useState("modal-background hide");
+  const { loginModalClasses, setLoginModalClasses, modalBackgroundClasses, setModalBackgroundClasses } = useContext(GlobalContext);
 
-    function launchLoginModal() {
-        setModalBackgroundClasses("modal-background");
-        setLoginModalClasses("modal");
-    } 
+  // const [loginModalClasses, setLoginModalClasses] = useState("modal hide");
+  // const [modalBackgroundClasses, setModalBackgroundClasses] = useState("modal-background hide");
 
-    function closeModal() {
-        setModalBackgroundClasses("modal-background hide");
-        setLoginModalClasses("modal hide");
-    }
+  function launchLoginModal() {
+      setModalBackgroundClasses("modal-background");
+      setLoginModalClasses("modal");
+  } 
+
+  function closeModal() {
+      setModalBackgroundClasses("modal-background hide");
+      setLoginModalClasses("modal hide");
+  }
 
   return (
     <div className="login-screen">
@@ -28,8 +29,10 @@ function LoginScreen() {
 
       <div className="login-screen__btn-div">
           <button className="login-screen__login-btn" onClick={launchLoginModal}>Login</button>
-          <button className="login-screen__register-btn">Register</button>
+          <Link to="/sign-up" className="login-screen__register-btn">Register</Link>
       </div>
+
+      <Link className="login-screen__guest-btn" to="/">Continue as guest</Link>
 
       <div className={loginModalClasses}>
           <LoginForm />

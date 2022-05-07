@@ -5,22 +5,22 @@
 }
 
 @mixin logo-heading {
-    font-family: $text-font;
-    color: $text-colour;
+    font-family: 'El Messiri', sans-serif;;
+    color: $text-colour !important;
     font-size: 2rem;
     line-height: 2.2rem;
 }
 
 @mixin heading {
     font-family: $text-font;
-    color: $text-colour;
-    font-weight: bold;
+    color: $text-colour !important;
+    // font-weight: bold;
     font-size: 1.5rem;
     line-height: 2.2rem;
 }
 
 @mixin p-text {
-    font-family: $text-font;
+    font-family: $text-font !important;
     color: $text-colour;
     font-size: 1.2rem;
     line-height: 2.2rem;
@@ -28,7 +28,7 @@
 
 @mixin light-p-text {
     @include p-text;
-    color:  $light-text-colour;
+    color:  $light-text-colour !important;
 }
 
 @mixin input {
@@ -58,4 +58,17 @@
     padding-right: 12px;
     margin: 5px 0;
     cursor: pointer;
+}
+
+@mixin outline-btn {
+    @include btn-beginnings;
+    border: 1px solid $signature-colour;
+    color: $signature-colour;
+    background-color: white;
+}
+
+@mixin solid-btn {
+    @include btn-beginnings;
+    background: $signature-colour;
+    color: white !important;
 }

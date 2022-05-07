@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { GlobalContext } from '../context/GlobalContext';
 import { Image } from "cloudinary-react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // components
 import Nav from '../components/Nav';
@@ -13,12 +13,14 @@ import tiktokIcon from "../assets/tiktok-icon.svg";
 import twitterIcon from "../assets/twitter-icon.svg";
 import arrowLeft from "../assets/arrow-left.svg";
 
-function Profile() {
-  const { selectedUser } = useContext(GlobalContext);
+function UserProfile() {
+  const { selectedUser, setUser } = useContext(GlobalContext);
 
   const [userInstagram, setUserInstagram] = useState("");
   const [userTwitter, setUserTwitter] = useState("");
   const [userTiktok, setUserTiktok] = useState("");
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     setUserInstagram("https://www.instagram.com/" + selectedUser.instagramHandle);
@@ -26,22 +28,26 @@ function Profile() {
     setUserTiktok("https://www.tiktok.com/@" + selectedUser.tiktokHandle);
   }, []);
 
-  console.log(selectedUser);
+  const logoutUser = () => {
+    setUser(null);
+    navigate("/");
+  }
 
   return (
     <>
       <Nav />
       <div className="profile">
-      <Link to="/" className="profile__back-div">
-        <img className="profile__back-icon" src={arrowLeft} alt="left arrow icon" />
-        <p className="profile__light-p">Go back</p>
-      </Link>
         <div className="profile__info-container">
           <Image className="profile__img" cloudName="dum8n0mzw" publicId={selectedUser.profilePictureLink} />
 
           <div className="profile__info-div">
             <h1 className="profile__heading">Hey I'm {selectedUser.name}</h1>
             <p className="profile__light-p">{selectedUser.bio}</p>
+
+            <div className="profile__btn-div">
+              <button className="profile__edit-profile">Edit profile</button>
+              <p className="profile__light-p" onClick={logoutUser}>Logout</p>
+            </div>
           </div>
         </div>
 
@@ -71,4 +77,4 @@ function Profile() {
   )
 }
 
-export default Profile
+export default UserProfile

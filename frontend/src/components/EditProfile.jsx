@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from 'react';
 
-function EditProfile(props) {
-    const [instagramLink, setInstagramLink] = useState("");
+function EditProfile() {
+  const { user } = useContext(UserContext);
 
   return (
     <div>
       <form>
-          <input type="text" value={props.name} />
-          <input type="text" value={props.email} />
-          <input type="text" value={props.age} />
-          <input type="text" value={props.city} />
-          <p>{props.instagram}</p>
-          <p>{props.twitter}</p>
-          <p>{props.tiktok}</p>
+          <input type="text" value={user.name} />
+          <input type="text" value={user.bio} />
+          <input type="text" value={user.city} />
+          <p>{user.instagram}</p>
+          <p>{user.twitter}</p>
+          <p>{user.tiktok}</p>
       </form>
 
-        <a href={props.instagram} target="_blank">Insta!</a>
-        <a href={props.twitter} target="_blank">Twitter!</a>
-        <a href={props.tiktok} target="_blank">Tiktok!</a>
+        <a href={user.instagram} target="_blank">Insta!</a>
+        <a href={user.twitter} target="_blank">Twitter!</a>
+        <a href={user.tiktok} target="_blank">Tiktok!</a>
     </div>
   )
 }

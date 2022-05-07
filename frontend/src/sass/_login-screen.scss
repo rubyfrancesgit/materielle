@@ -9,24 +9,29 @@
     }
 
     &__light-p {
-        @include light-p-text;
+        @include p-text;
         text-align: center;
         padding-top: 2rem;
         padding-bottom: 2rem;
     }
 
     &__login-btn {
-        @include btn-beginnings;
+        @include outline-btn;
         margin-right: .5rem;
     }
 
     &__register-btn {
-        @include btn-beginnings;
+        @include solid-btn;
         margin-left: .5rem;
     }
 
     &__btn-div {
         display: flex;
+    }
+
+    &__guest-btn {
+        @include light-p-text;
+        padding-top: 1rem;
     }
 }
 
@@ -44,7 +49,7 @@
     }
 
     &__btn {
-        @include btn-beginnings;
+        @include solid-btn;
         margin-top: 2rem;
     }
 }

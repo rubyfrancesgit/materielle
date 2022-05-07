@@ -1,0 +1,23 @@
+.signup-form {
+    width: 100vw;
+    height: 100vh;
+    @include center;
+    flex-direction: column;
+
+    &__form {
+        @include center;
+        flex-direction: column;
+    }
+
+    &__heading {
+        @include heading;
+    }
+
+    &__input {
+        @include input;
+    }
+
+    &__submit {
+        @include btn-beginnings;
+    }
+}

@@ -21,43 +21,6 @@ app.listen(3001, () => {
     console.log("Server is listening on port 3001");
 });
 
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        console.log(file + "disk");
-        cb(null, "./images");
-    },
-
-    filename: function(req, file, cb) {
-        console.log(file + "filename");
-        console.log("mmmmm");
-        cb(null, uuidv4() + "-" + Date.now() + path.extname(file.originalname)); 
-    }
-});
-
-const upload = multer({ storage });
-
-app.post("/uploadImage", upload.single("image"), (req, res) => {
-    console.log(req.file + "upload")
-    res.send("Image uploaded?");
-});
-
-// app.post("/uploadImage", upload.single("image"), (req,res) => {
-//     res.send("Image uploaded?");
-//     // console.log(req.json);
-//     // const image = new Image({
-//     //     image: {
-//     //         data: req.file.filename
-//     //     }
-//     // });
-//     // image.save()
-//     //     .then(result => {
-//     //         console.log(image, result);
-//     //         res.send(result);
-//     //     }).catch(err => {
-//     //         res.send(err);
-//     //     });
-// });
-
 app.get("/getUsers", (req, res) => {
     UserModel.find({}, (err, result) => {
         if (err) {
@@ -68,7 +31,7 @@ app.get("/getUsers", (req, res) => {
     });
 });
 
-// check user email (if taken)
+// check if user email is taken
 app.post("/checkUserEmail", (req, res) => {
     User.findOne({
         email: req.body.email
@@ -103,9 +66,7 @@ app.post("/createUser", (req, res) => {
                 twitterHandle: req.body.twitterHandle,
                 tiktokHandle: req.body.tiktokHandle,
                 bio: req.body.bio,
-                photoLinkOne: req.body.photoLinkOne,
-                photoLinkTwo: req.body.photoLinkTwo,
-                photoLinkThree: req.body.photoLinkThree
+                profilePictureLink: req.body.photoLinkOne
             });
             user.save()
                 .then(result => {
